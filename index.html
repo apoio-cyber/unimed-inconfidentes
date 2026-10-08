@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exclusão Unimed Inconfidentes</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="wrap topo-in">
+    <div>
+      <h1>Exclusão de beneficiário · Unimed Inconfidentes</h1>
+      <p>Cucinare Pro Alimentação Ltda · CNPJ 04.596.502/0068-95 · Ouro Preto/MG</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="aviso">
+    <strong>Termo de comunicação de exclusão de beneficiário (AN.VEN.COM.008).</strong>
+    Anexe o <b>Termo de Rescisão (TRCT)</b> em PDF: nome, CPF, endereço e motivo são preenchidos automaticamente — confira tudo antes de gerar.
+    Depois, <b>imprima, assine e carimbe</b> o termo e envie junto com o termo de rescisão.
+    <br><span class="obs">Tudo é processado no seu navegador: nenhum dado é enviado para a internet.</span>
+  </div>
+
+  <section class="card">
+    <h2><span class="num">1</span> Termo de rescisão (TRCT)</h2>
+    <p class="ajuda">PDF gerado pelo sistema de folha (com texto). PDF escaneado ou foto não pode ser lido — nesse caso preencha os campos abaixo manualmente.</p>
+    <input type="file" id="trct" accept="application/pdf,image/jpeg,image/png">
+    <div id="trctStatus" class="ajuda" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">2</span> Beneficiário <small>(todos os campos são obrigatórios)</small></h2>
+    <div class="grid3">
+      <label class="span2">Nome completo (sem abreviações) *<input id="nome" style="text-transform:uppercase" autocomplete="off"></label>
+      <label>CPF *<input id="cpf" data-mask="cpf" inputmode="numeric" placeholder="000.000.000-00" autocomplete="off"></label>
+      <label class="span2">Endereço completo (rua, nº, bairro, cidade/UF, CEP) *<input id="endereco" style="text-transform:uppercase" autocomplete="off"></label>
+      <label>Telefone do beneficiário *<input id="telefone" data-mask="tel" inputmode="numeric" placeholder="(31) 99999-9999" autocomplete="off"></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">3</span> Motivo do desligamento</h2>
+    <p class="ajuda">Preenchido pelo TRCT quando possível. Confira ou escolha uma opção.</p>
+    <div class="radios" id="motivo">
+      <label><input type="radio" name="motivo" value="semJusta"> Dispensa por iniciativa do empregador sem justa causa</label>
+      <label><input type="radio" name="motivo" value="pedido"> Demissão por iniciativa do empregado</label>
+      <label><input type="radio" name="motivo" value="exoneracao"> Exoneração</label>
+      <label><input type="radio" name="motivo" value="aposentadoria"> Aposentadoria</label>
+      <label><input type="radio" name="motivo" value="outros"> Outros</label>
+    </div>
+    <label id="outrosBox" hidden style="margin-top:8px">Especifique *<input id="motivoOutros" maxlength="80"></label>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">4</span> Respostas fixas</h2>
+    <ul class="ajuda" style="margin:0;padding-left:18px">
+      <li>Pergunta 1 (contribuía com a mensalidade): <b>Não</b></li>
+      <li>Pergunta 2 (período de contribuição): <b>em branco</b></li>
+      <li>Pergunta 4 (foi comunicado sobre manter o plano como inativo): <b>Não</b></li>
+      <li>Pergunta 5 (optou pela extensão assistencial): <b>Não</b></li>
+      <li>Data: <b>Ouro Preto, <span id="dataHoje"></span></b> (dia do preenchimento)</li>
+    </ul>
+  </section>
+
+  <section class="card final">
+    <div id="erros" class="erros" hidden></div>
+    <button type="button" id="gerar" class="btn grande">Gerar termo para imprimir</button>
+    <p class="ajuda" id="status"></p>
+    <div id="pos" class="aviso" hidden>
+      <b>Próximos passos:</b> imprima o termo, <b>assine e carimbe</b> no campo CONTRATANTE e envie junto com o <b>termo de rescisão</b>.
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="js/trct.js"></script>
+<script src="js/termo.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
